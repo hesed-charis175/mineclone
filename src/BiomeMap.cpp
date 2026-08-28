@@ -1,0 +1,71 @@
+#include "BiomeMap.h"
+
+const BiomeTerrainParams &BiomeMap::terrainParams(BiomeType biome) const {
+  static const std::unordered_map<BiomeType, BiomeTerrainParams> table = {
+      {BiomeType::Desert, {0.05f, 6, 2, 3, 0.5f, 0.0f, false, 2}},
+      {BiomeType::Savanna, {0.05f, 7, 3, 4, 0.5f, 0.0f, false, 2}},
+      {BiomeType::Plains, {0.05f, 7, 3, 4, 0.5f, 0.0f, false, 2}},
+      {BiomeType::Forest, {0.06f, 8, 4, 4, 0.5f, 0.0f, false, 2}},
+      {BiomeType::Jungle, {0.07f, 8, 5, 4, 0.55f, 0.0f, false, 2}},
+      {BiomeType::Swamp, {0.04f, 5, 1, 3, 0.4f, 0.0f, false, 2}},
+      {BiomeType::Taiga, {0.06f, 9, 4, 4, 0.5f, 0.0f, false, 2}},
+      {BiomeType::CherryGrove, {0.05f, 8, 3, 4, 0.5f, 0.0f, false, 2}},
+      {BiomeType::Tundra, {0.04f, 7, 2, 3, 0.4f, 0.0f, false, 2}},
+      {BiomeType::Mountains, {0.05f, 24, 72, 4, 0.55f, 1.0f, true, 3}},
+  };
+  return table.at(biome);
+}
+
+const BiomeSurfaceParams &BiomeMap::surfaceParams(BiomeType biome) const {
+  static const std::unordered_map<BiomeType, BiomeSurfaceParams> table = {
+      {BiomeType::Desert,
+       {BlockType::Sand, BlockType::Sandstone, false, BlockType::Air,
+        BlockType::Air, 0.0f, TreeShape::Round, BlockType::Air, BlockType::Air,
+        TreeShape::Round, 0.0f, 0.0f, glm::vec3(0.0f)}},
+      {BiomeType::Savanna,
+       {BlockType::Grass, BlockType::Dirt, true, BlockType::AcaciaLog,
+        BlockType::AcaciaLeaves, 6.0f, TreeShape::Umbrella, BlockType::Air,
+        BlockType::Air, TreeShape::Round, 0.0f, 0.08f,
+        glm::vec3(0.65f, 0.6f, 0.25f)}},
+      {BiomeType::Plains,
+       {BlockType::Grass, BlockType::Dirt, true, BlockType::OakLog,
+        BlockType::OakLeaves, 5.0f, TreeShape::Round, BlockType::Air,
+        BlockType::Air, TreeShape::Round, 0.0f, 0.18f,
+        glm::vec3(0.45f, 0.75f, 0.3f)}},
+      {BiomeType::Forest,
+       {BlockType::Grass, BlockType::Dirt, true, BlockType::OakLog,
+        BlockType::OakLeaves, 2.5f, TreeShape::Round, BlockType::Air,
+        BlockType::Air, TreeShape::Round, 0.0f, 0.2f,
+        glm::vec3(0.35f, 0.65f, 0.3f)}},
+      {BiomeType::Jungle,
+       {BlockType::Grass, BlockType::Dirt, true, BlockType::JungleLog,
+        BlockType::JungleLeaves, 1.8f, TreeShape::Round, BlockType::Air,
+        BlockType::Air, TreeShape::Round, 0.0f, 0.25f,
+        glm::vec3(0.25f, 0.7f, 0.25f)}},
+      {BiomeType::Swamp,
+       {BlockType::Grass, BlockType::Dirt, true, BlockType::MangroveLog,
+        BlockType::MangroveLeaves, 3.0f, TreeShape::Weeping, BlockType::Air,
+        BlockType::Air, TreeShape::Round, 0.0f, 0.15f,
+        glm::vec3(0.35f, 0.5f, 0.3f)}},
+      {BiomeType::Taiga,
+       {BlockType::Grass, BlockType::Dirt, true, BlockType::SpruceLog,
+        BlockType::SpruceLeaves, 2.2f, TreeShape::Conical, BlockType::Air,
+        BlockType::Air, TreeShape::Round, 0.0f, 0.1f,
+        glm::vec3(0.4f, 0.55f, 0.35f)}},
+      {BiomeType::CherryGrove,
+       {BlockType::Grass, BlockType::Dirt, true, BlockType::CherryLog,
+        BlockType::CherryLeaves, 4.0f, TreeShape::Round, BlockType::Air,
+        BlockType::Air, TreeShape::Round, 0.0f, 0.18f,
+        glm::vec3(0.6f, 0.7f, 0.4f)}},
+      {BiomeType::Tundra,
+       {BlockType::Dirt, BlockType::Stone, false, BlockType::Air,
+        BlockType::Air, 0.0f, TreeShape::Round, BlockType::Air, BlockType::Air,
+        TreeShape::Round, 0.0f, 0.0f, glm::vec3(0.0f)}},
+      {BiomeType::Mountains,
+       {BlockType::Stone, BlockType::Stone, true, BlockType::OakLog,
+        BlockType::OakLeaves, 7.0f, TreeShape::Round, BlockType::AcaciaLog,
+        BlockType::AcaciaLeaves, TreeShape::Umbrella, 0.5f, 0.15f,
+        glm::vec3(0.5f, 0.55f, 0.4f)}},
+  };
+  return table.at(biome);
+}
